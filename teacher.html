@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard - Attendance Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <div class="dashboard-header">
+        <h1>Teacher Dashboard</h1>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+
+      <div class="dashboard-content">
+        <!-- Add Student Section -->
+        <div class="dashboard-card">
+          <h3>Add New Student</h3>
+          <form id="addStudentForm">
+            <div class="form-row">
+              <input
+                type="text"
+                id="studentName"
+                placeholder="Student Name"
+                required
+              />
+              <input
+                type="text"
+                id="studentId"
+                placeholder="Student ID"
+                required
+              />
+            </div>
+            <div class="form-row">
+              <input
+                type="email"
+                id="studentEmail"
+                placeholder="Email"
+                required
+              />
+              <!--<label for="studentClass"
+                >Student will be enrolled in all subjects</label
+              >-->
+              <select id="studentClass" required style="display: none">
+                <option value="all" selected>All Subjects</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <select id="studentSemester" required>
+                <option value="">Select Semester</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+                <option value="3">Semester 3</option>
+                <option value="4">Semester 4</option>
+                <option value="5">Semester 5</option>
+                <option value="6">Semester 6</option>
+              </select>
+              <select id="studentSubject" required>
+                <option value="">Select Subject</option>
+                <option value="software engineering">
+                  software engineering
+                </option>
+                <option value="CPUC">CPUC</option>
+                <option value="Web development using php">
+                  Web development using php
+                </option>
+                <option value="IOT">IOT</option>
+                <option value="Minor project Work">Minor project Work</option>
+                <option value="CAHM">CAHM</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Student</button>
+          </form>
+        </div>
+
+        <!-- Mark Attendance Section -->
+        <div class="dashboard-card">
+          <h3>Mark Attendance</h3>
+          <form id="attendanceForm">
+            <div class="form-row">
+              <select id="attendanceSemester" required>
+                <option value="">Select Semester</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+                <option value="3">Semester 3</option>
+                <option value="4">Semester 4</option>
+                <option value="5">Semester 5</option>
+                <option value="6">Semester 6</option>
+              </select>
+              <select id="attendanceClass" required>
+                <option value="">Select Subject</option>
+              </select>
+              <input type="date" id="attendanceDate" required />
+            </div>
+            <button type="submit" class="btn btn-success">Load Students</button>
+          </form>
+
+          <div id="attendanceList" class="student-list" style="display: none">
+            <h4>
+              Mark Attendance for <span id="selectedClass"></span> -
+              <span id="selectedDate"></span>
+            </h4>
+            <div id="studentsForAttendance"></div>
+            <button
+              onclick="saveAttendance()"
+              class="btn btn-primary"
+              style="margin-top: 15px"
+            >
+              Save Attendance
+            </button>
+          </div>
+        </div>
+
+        <!-- Class Statistics -->
+        <div class="dashboard-card">
+          <h3>Today's Class Statistics</h3>
+          <div class="form-row">
+            <select id="statsSemester">
+              <option value="">Select Semester</option>
+              <option value="1">Semester 1</option>
+              <option value="2">Semester 2</option>
+              <option value="3">Semester 3</option>
+              <option value="4">Semester 4</option>
+              <option value="5">Semester 5</option>
+              <option value="6">Semester 6</option>
+            </select>
+          </div>
+          <div id="classStats">
+            <!-- Per class stats will be populated here -->
+          </div>
+        </div>
+
+        <!-- Search Students -->
+        <div class="dashboard-card">
+          <h3>Search Students</h3>
+          <form id="searchForm">
+            <div class="form-row">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by name or ID"
+              />
+              <select id="searchClass">
+                <option value="">All Subjects</option>
+                <option value="software engineering">
+                  software engineering
+                </option>
+                <option value="CAHM">CAHM</option>
+                <option value="CPUC">CPUC</option>
+                <option value="Web development using php">
+                  Web development using php
+                </option>
+                <option value="IOT">IOT</option>
+                <option value="Minor project Work">Minor project Work</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+          <div
+            id="searchResults"
+            class="student-list"
+            style="display: none"
+          ></div>
+        </div>
+
+        <!-- Student List -->
+        <div class="dashboard-card">
+          <h3>All Students</h3>
+          <div class="form-row">
+            <select id="filterSemester">
+              <option value="">All Semesters</option>
+              <option value="1">Semester 1</option>
+              <option value="2">Semester 2</option>
+              <option value="3">Semester 3</option>
+              <option value="4">Semester 4</option>
+              <option value="5">Semester 5</option>
+              <option value="6">Semester 6</option>
+            </select>
+          </div>
+          <div id="allStudentsList" class="student-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="teacher.js"></script>
+  </body>
+</html>

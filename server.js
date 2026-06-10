@@ -82,7 +82,7 @@ app.get("/api/health", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index-auth.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.use((req, res, next) => {

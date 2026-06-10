@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -183,6 +183,14 @@
       </div>
     </div>
 
+    <script src="auth.js"></script>
+    <script>
+      if (!authService.isAuthenticated()) {
+        globalThis.location.href = "index-auth.html";
+      }
+    </script>
+    <script src="script.js"></script>
+    <script src="app.js"></script>
     <script src="teacher.js"></script>
   </body>
 </html>

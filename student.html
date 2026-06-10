@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -76,42 +76,54 @@
         <!-- Subject-wise Attendance -->
         <div class="dashboard-card">
           <h3>Subject-wise Attendance</h3>
-          <table class="attendance-table" id="subjectAttendanceTable">
-            <thead>
-              <tr>
-                <th>Subject</th>
-                <th>Total Classes</th>
-                <th>Present</th>
-                <th>Absent</th>
-                <th>Leave</th>
-                <th>Percentage</th>
-              </tr>
-            </thead>
-            <tbody id="subjectAttendanceBody">
-              <!-- Subject attendance data will be populated here -->
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="attendance-table" id="subjectAttendanceTable">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Total Classes</th>
+                  <th>Present</th>
+                  <th>Absent</th>
+                  <th>Leave</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody id="subjectAttendanceBody">
+                <!-- Subject attendance data will be populated here -->
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Recent Attendance -->
         <div class="dashboard-card">
           <h3>Recent Attendance Record</h3>
-          <table class="attendance-table" id="recentAttendanceTable">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="recentAttendanceBody">
-              <!-- Recent attendance data will be populated here -->
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="attendance-table" id="recentAttendanceTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Subject</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentAttendanceBody">
+                <!-- Recent attendance data will be populated here -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
 
+    <script src="auth.js"></script>
+    <script>
+      if (!authService.isAuthenticated()) {
+        globalThis.location.href = "index-auth.html";
+      }
+    </script>
+    <script src="script.js"></script>
+    <script src="app.js"></script>
     <script src="student.js"></script>
   </body>
 </html>
